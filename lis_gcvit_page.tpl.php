@@ -5,7 +5,7 @@
 <!--  ------------iframe gbrowse-----------------  -->
 <iframe id="frameviewer" frameborder="0" width="1200" height="2500" scrolling="yes"  src="<?php  echo($url_source);  ?>"  name="frameviewer">
     
-    <!--gcvit phaseolus-->
+    <!--gcvit phaseolus, cicer-->
 </div>
 
 
