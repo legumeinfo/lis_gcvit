@@ -1,0 +1,10 @@
+name = lis_gcvit
+description = Container page for all LIS GCViT instances(URLs) in an iframe.
+core = 7.x
+files[] = lis_gcvit.module
+
+package = LIS
+;dependencies[] = 
+;dependencies[] = 
+;files[] = 
+;configure = 

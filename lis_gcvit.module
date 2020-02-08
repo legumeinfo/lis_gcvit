@@ -1,0 +1,77 @@
+<?php
+// $Id$
+
+// lis_gcvit
+
+// Sudhansu Dash
+// 2020 Feb 07
+
+
+/**
+ * Implements hook_menu().
+ */
+
+function lis_gcvit_menu() {
+  $items = array();
+  $items['germplasm/gcvit/%'] = array( //this creates a URL with wildcard for the species specific gcvit path
+    'title' => 'GCViT', //page title
+    'description' => 'GCViT at LIS.',
+    'page callback' => lis_gcvit_page_callback, //this fn is called when page accessed. For form, use drupal_get_form
+    //'page arguments' => array('grin_acc_query_form'), //form name here; no need if page callback fn() doesn't need it.
+    'page arguments' => array(2), // the args for page callback function '2' is the 3rd component of path (0 based index);
+    'access callback' => TRUE,
+  );
+  
+  return $items;
+}
+
+
+/**
+ * Implements hook_theme().
+ */
+
+
+function lis_gcvit_theme() {
+  return array(
+    'lis_gcvit_page_template' => array(  // this array name to be used in theme() fn.
+    'template' => 'lis_gcvit_page',  //template file lis_gbrowse_page.tpl.php
+    //'variables' => array(),
+    ),  //array page_template
+  );  // array return
+}    
+
+/**
+ * Implements page callback.
+ */
+
+function lis_gcvit_page_callback($third_path_component) {
+  //echo '---'.$bb.'---';
+  //$path = $_GET['q'];
+  //echo 'path: '.$path;
+#EXAMPLE: .../genomes/gbrowse/Pv1.0?query=label=gene_expression_atlas
+#https://gcvit.phaseolus.legumeinfo.org/
+#https://gcvit.cicer.legumeinfo.org/
+  ##Query params for gbrowse utility
+  #$qry_params = $_GET['query'];   # 'q' fails because drupal uses 'q' internally
+  #drupal_set_message("qry-par: $qry_params");
+  #$qry_params = "/?".$qry_params;
+  
+  //$url_source = "/gb2/gbrowse/$third_path_component";
+  $url_source = "https://gcvit.$third_path_component.legumeinfo.org";
+  #$url_source = $url_source.$qry_params;   
+  #drupal_set_message("url-source: $url_source; 3rd: $third_path_component; qry-param: $qry_params");
+   
+  // array name in hook_theme() that specifies page template file.
+  return theme ('lis_gcvit_page_template', array('url_source' => $url_source)); 
+}
+
+
+
+
+//  SCRATCH PAD
+//=============
+
+/*
+ 
+
+*/
