@@ -61,7 +61,7 @@ function lis_gcvit_page_callback($third_path_component) {
         #drupal_set_message("url-source: $url_source; 3rd: $third_path_component; qry-param: $qry_params");
    
   // array name in hook_theme() that specifies page template file.
-  return theme ('lis_gcvit_page_template', array('url_source' => $url_source)); 
+  return theme ('lis_gcvit_page_template', array('url_source' => $url_source, 'third_path_component' => $third_path_component)); 
 }
 
 
